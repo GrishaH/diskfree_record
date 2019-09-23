@@ -5,7 +5,7 @@ Records the requested df (disk free) results in an sqlite database, while also d
 ## Install
 
 ```console
-$ npm install (name)
+$ npm install diskfree_record
 ```
 
 ## Usage

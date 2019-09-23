@@ -36,4 +36,3 @@ if (args.length === 3) {
   console.log('Incorrect number of arguments given (needs 1)');
   console.log('Specify the desired mountpoint');
 }
-

@@ -15,14 +15,14 @@ This is stored in df_database.db.
 This can then be displayed in the terminal as an ascii chart.
 
 ```console
-$ bin/df_sqlite.js /home
-$ bin/show_sqlite.js /home
+$ bin/df_record.js /home
+$ bin/df_display.js /home
 ```
 
 To record the df values every 10 minutes, use a time-based job scheduler, such as crontab.
 
 ```console
-$ */10 * * * * bin/df_sqlite.js /home
+$ */10 * * * * bin/df_record.js /home
 ```
 
 

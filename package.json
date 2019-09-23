@@ -1,0 +1,19 @@
+{
+  "name": "diskfree_record",
+  "version": "1.0.0-beta",
+  "description": "Records requested df results in an sqlite database, and displays it in a time range using an ascii chart,
+  "bin": {
+    "df_to_sqlite": "bin/df_sqlite.js",
+    "display_df_db": "bin/show_sqlite.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grisha Hushchyn",
+  "license": "MIT",
+  "dependencies": {
+    "@sindresorhus/df": "^3.1.1",
+    "asciichart": "^1.5.9",
+    "sqlite3": "^4.1.0"
+  }
+}

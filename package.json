@@ -1,6 +1,6 @@
 {
   "name": "diskfree_record",
-  "version": "1.0.0-beta.1",
+  "version": "1.0.0-beta.2",
   "description": "Records requested df results in an sqlite database, and displays it in a time range using an ascii chart",
   "bin": {
     "df_record": "bin/df_record.js",

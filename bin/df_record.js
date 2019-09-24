@@ -34,5 +34,5 @@ if (args.length === 3) {
   record_df(args[2])
 } else {
   console.log('Incorrect number of arguments given (needs 1)');
-  console.log('Specify the desired mountpoint');
+  console.log('Specify the desired file system');
 }

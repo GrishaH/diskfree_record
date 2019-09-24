@@ -1,6 +1,6 @@
 {
   "name": "diskfree_record",
-  "version": "1.0.0",
+  "version": "1.1.0-beta",
   "description": "Records requested df results in an sqlite database, and displays it in a time range using an ascii chart",
   "bin": {
     "df_record": "bin/df_record.js",
@@ -14,13 +14,14 @@
     "url": "git://github.com/GrishaH/diskfree_record.git"
   },
   "files": [
-    "bin/*.js" 
+    "bin/*.js"
   ],
   "author": "Grisha Hushchyn",
   "license": "MIT",
   "dependencies": {
     "@sindresorhus/df": "^3.1.1",
     "asciichart": "^1.5.9",
+    "ml-regression-polynomial": "^2.0.0",
     "sqlite3": "^4.1.0"
   }
 }

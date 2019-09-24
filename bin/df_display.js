@@ -12,7 +12,7 @@ let display_df = async (requestedMountpoint, timeRange = 24) => {
   // let extrapolate = new extrap();
   let readData;
   let sql = `SELECT mountpoint,
-                    space_used,
+                    space_available,
                     time
              FROM df_table
              WHERE mountpoint = ? AND time >= datetime('now', '-${timeRange} hour')`;
@@ -29,14 +29,16 @@ let display_df = async (requestedMountpoint, timeRange = 24) => {
     let readData = rows;
     let s0 = new Array(readData.length);
     for (let i = 0; i < s0.length; i++) {
-      s0[i] = readData[i].space_used / 10**9; // 10^9 as this converts the space used data into GB
-      // extrapolate.given((parseInt((new Date(readData[i].time).getTime() / 1000).toFixed(0))), readData[i].space_used);
+      s0[i] = readData[i].space_available / 10**9; // 10^9 as this converts the space used data into GB
+      // extrapolate.given((parseInt((new Date(readData[i].time).getTime() / 1000).toFixed(0))), readData[i].space_available);
     }
     // console.log(readData.toString());
     // console.log((parseInt((new Date().getTime() / 1000).toFixed(0)) + (0)));
     // give time via unix timestamp
-    // console.log(extrapolate.getLinear((parseInt((new Date().getTime() / 1000).toFixed(0)) + (0))) / 10**9); 
-    console.log(asciichart.plot(s0, {height:40}));
+    // let temp = parseInt((new Date().getTime() / 1000).toFixed(0));
+    // console.log(temp);
+    // console.log(extrapolate.getLinear(temp + (60 * 60 )) / 10**9); 
+    console.log(asciichart.plot(s0));
   });
   db.close();
 };

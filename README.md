@@ -18,6 +18,7 @@ This can then be displayed in the terminal as an ascii chart.
 $ bin/df_record.js /home
 $ bin/df_display.js /home
 ```
+By default, it creates a database file called `df_databse.db` in the current working directory. 
 
 To record the df values every 10 minutes, use a time-based job scheduler, such as crontab.
 

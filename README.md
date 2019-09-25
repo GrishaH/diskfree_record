@@ -37,15 +37,19 @@ $ bin/df_predict.js /home
 For `df_display` and `df_predict`, you can specify optional parameters to fine-tune your output.
 
 ```console
-$ bin/df_display.js /home -v 12
-$ # Display the ascii chart for space available for the past 12 hours.
-$ # -v or --view_hours, specify how many past hours to display. Default 24.
+$ bin/df_display.js /home -s 24 -e 12 -h 15
+$ # Display the ascii chart for space available between 24 and 12 hours ago, with
+$ # the ascii chart height set at 15.
+$ # -s or --start_view_hours, sets how many hours ago to start viewing. Default 24.
+$ # -e or --end_view_hours, sets how many hours ago to end viewing. Default 0.
+$ # -h or --chart_height, specify the desired y-axis height for the ascii chart. Default 30.
 ```
 ```console
-$ bin/df_predict.js /home -v 12 -p 2 -d 3
+$ bin/df_predict.js /home -s 12 -e 2 -p 2 -d 3
 $ # Display the estimated space available in two hour's time, using a polynomial
-$ # with a degree of 3, using the data from the past 12 hours.
-$ # -v or --view_hours, specify how many past hours to consider in calculation. Default 24.
+$ # with a degree of 3, using the data from between 12 and 2 hours ago.
+$ # -s or --start_view_hours, sets how many hours ago to start predicting. Default 24.
+$ # -e or --end_view_hours, sets how many hours ago to stop predicting. Default 0.
 $ # -p or --predict_hours, specify how many hours into the future to predict. Default 1 
 $ # -d or --degree, specify what degree the produced polynomial should be in. Default 4.
 ```

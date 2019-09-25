@@ -8,13 +8,14 @@ const program = require('commander');
 
 const filename = './df_database.db';
 
-let predict_df = async (requestedMountpoint, hoursToView, hoursToPredict, degree) => {
+let predict_df = async (requestedMountpoint, startHoursView, endHoursView, hoursToPredict, degree) => {
   let x = [];
   let y = [];
   let sql = `SELECT space_available,
                     time
              FROM df_table
-             WHERE mountpoint = ? AND time >= datetime('now', '-${hoursToView} hour')`;
+             WHERE mountpoint = ? AND time >= datetime('now', '-${startHoursView} hour')
+                                  AND time <= datetime('now', '-${endHoursView} hour')`;
   let db = await new sqlite3.Database(filename, sqlite3.OPEN_READONLY, (err) => {
     if (err) {
       console.error(err.message);
@@ -48,7 +49,8 @@ let mount_point;
 
 program
   .arguments('<desired_mount_point>', 'desired mount point')
-  .option('-v, --view_hours <number>', 'select how many hours to consider', 24)
+  .option('-s, --start_view_hours <number>', 'select how many hours to view back start', 24)
+  .option('-e, --end_view_hours <number>', 'select how many hours to view back end (requires start > end)', 0)
   .option('-p, --predict_hours <number>', 'how many hours into the future to predict', 1)
   .option('-d, --degree <number>', 'what degree of polynomial to use', 4)
   .action(function (desired_mount_point) { mount_point = desired_mount_point; })
@@ -60,4 +62,4 @@ if (typeof mount_point === 'undefined') {
   console.error('how many hours into the future you would like to predict, and the degree of the polynomial used.');
   process.exit(1);
 }
-predict_df(mount_point, program.view_hours, program.predict_hours, program.degree);
+predict_df(mount_point, program.start_view_hours, program.end_view_hours, program.predict_hours, program.degree);

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 "use strict";
 
-const df = require('@sindresorhus/df');
+const df      = require('@sindresorhus/df');
 const sqlite3 = require('sqlite3').verbose();
 
 const filename = './df_database.db';
@@ -33,6 +33,6 @@ let args = process.argv;
 if (args.length === 3) {
   record_df(args[2])
 } else {
-  console.log('Incorrect number of arguments given (needs 1)');
-  console.log('Specify the desired file system');
+  console.error('No mount point given - required parameter (1 required)');
+  console.error('Specify the desired mount point');
 }

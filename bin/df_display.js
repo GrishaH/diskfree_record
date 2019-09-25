@@ -2,9 +2,9 @@
 "use strict";
 
 const asciichart = require ('asciichart')
-const sqlite3 = require('sqlite3').verbose();
-const assert = require('assert');
-const program = require('commander');
+const sqlite3    = require('sqlite3').verbose();
+const assert     = require('assert');
+const program    = require('commander');
 
 const filename = './df_database.db';
 
@@ -30,17 +30,17 @@ let display_df = async (requestedMountpoint, hoursToView) => {
   db.close();
 };
 
-let file_system;
+let mount_point;
 
 program
-  .arguments('<desired_file_system>', 'desired file system to display')
+  .arguments('<desired_mount_point>', 'desired mount point to display')
   .option('-v, --view_hours <number>', 'select how many hours to view', 24)
-  .action(function (desired_file_system) { file_system = desired_file_system; })
+  .action(function (desired_mount_point) { mount_point = desired_mount_point; })
   .parse(process.argv);
 
-if (typeof file_system === 'undefined') {
-  console.error('No file system given - required parameter (1 required, 1 optional)');
-  console.error('Specify the desired file system, and optionally the timerange you would like to consider in hours.');
+if (typeof mount_point === 'undefined') {
+  console.error('No mount point given - required parameter (1 required, 1 optional)');
+  console.error('Specify the desired mount point, and optionally the timerange you would like to consider in hours.');
   process.exit(1);
 }
-display_df(file_system, program.view_hours);
+display_df(mount_point, program.view_hours);

@@ -1,10 +1,11 @@
 {
   "name": "diskfree_record",
-  "version": "1.1.0-beta",
+  "version": "1.1.0",
   "description": "Records requested df results in an sqlite database, and displays it in a time range using an ascii chart",
   "bin": {
     "df_record": "bin/df_record.js",
-    "df_display": "bin/df_display.js"
+    "df_display": "bin/df_display.js",
+    "df_predict": "bin/df_predict.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
